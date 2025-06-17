@@ -1,10 +1,10 @@
 <?php
 
-  require_once("models/Movie.php");
-  require_once("models/Message.php");
+  require_once("../Movie.php");
+  require_once("../Message.php");
 
   // Review DAO
-  require_once("dao/ReviewDAO.php");
+  require_once("ReviewDAO.php");
 
   class MovieDAO implements MovieDAOInterface {
 

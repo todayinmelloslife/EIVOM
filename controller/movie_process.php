@@ -1,11 +1,11 @@
 <?php
 
-  require_once("globals.php");
-  require_once("db.php");
-  require_once("models/Movie.php");
-  require_once("models/Message.php");
-  require_once("dao/UserDAO.php");
-  require_once("dao/MovieDAO.php");
+  require_once(dirname(__DIR__) . "/model/config/globals.php");
+  require_once(dirname(__DIR__) . "/model/config/db.php");
+  require_once(dirname(__DIR__) . "/model/Movie.php");
+  require_once(dirname(__DIR__) . "/model/Message.php");
+  require_once(dirname(__DIR__) . "/model/dao/UserDAO.php");
+  require_once(dirname(__DIR__) . "/model/dao/MovieDAO.php");
 
   $message = new Message($BASE_URL);
   $userDao = new UserDAO($conn, $BASE_URL);

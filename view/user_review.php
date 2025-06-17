@@ -1,6 +1,6 @@
 <?php
 
-    require_once("models/User.php");
+    require_once("../model/User.php");
 
     $userModel = new User();
 
