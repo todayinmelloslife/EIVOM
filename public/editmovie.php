@@ -1,10 +1,10 @@
 <?php
-  require_once("templates/header.php");
+  require_once(__DIR__ . "/../mvc/view/header.php");
 
   // Verifica se usuário está autenticado
-  require_once("models/User.php");
-  require_once("dao/UserDAO.php");
-  require_once("dao/MovieDAO.php");
+  require_once(__DIR__ . "/../mvc/model/User.php");
+  require_once(__DIR__ . "/../mvc/model/dao/UserDAO.php");
+  require_once(__DIR__ . "/../mvc/model/dao/MovieDAO.php");
 
   $user = new User();
   $userDao = new UserDao($conn, $BASE_URL);
@@ -44,7 +44,7 @@
         <div class="col-md-6 offset-md-1">
           <h1><?= $movie->title ?></h1>
           <p class="page-description">Altere os dados do filme no fomrulário abaixo:</p>
-          <form id="edit-movie-form" action="<?= $BASE_URL ?>movie_process.php" method="POST" enctype="multipart/form-data">
+          <form id="edit-movie-form" action="<?= $BASE_URL ?>../mvc/controller/movie_process.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="type" value="update">
             <input type="hidden" name="id" value="<?= $movie->id ?>">
             <div class="form-group">
@@ -88,5 +88,5 @@
     </div>
   </div>
 <?php
-  require_once("templates/footer.php");
+  require_once(__DIR__ . "/../mvc/view/footer.php");
 ?>

@@ -1,10 +1,10 @@
 <?php
-  require_once("templates/header.php");
+  require_once(__DIR__ . "/../mvc/view/header.php");
 
   // Verifica se usuário está autenticado
-  require_once("models/User.php");
-  require_once("dao/UserDAO.php");
-  require_once("dao/MovieDAO.php");
+  require_once(__DIR__ . "/../mvc/model/User.php");
+  require_once(__DIR__ . "/../mvc/model/dao/UserDAO.php");
+  require_once(__DIR__ . "/../mvc/model/dao/MovieDAO.php");
 
   $user = new User();
   $userDao = new UserDao($conn, $BASE_URL);
@@ -41,7 +41,7 @@
               <a href="<?= $BASE_URL ?>editmovie.php?id=<?= $movie->id ?>" class="edit-btn">
                 <i class="far fa-edit"></i> Editar
               </a>
-              <form action="<?= $BASE_URL ?>movie_process.php" method="POST">
+              <form action="<?= $BASE_URL ?>../mvc/controller/movie_process.php" method="POST">
                 <input type="hidden" name="type" value="delete">
                 <input type="hidden" name="id" value="<?= $movie->id ?>">
                 <button type="submit" class="delete-btn">
@@ -56,5 +56,5 @@
     </div>
   </div>
 <?php
-  require_once("templates/footer.php");
+  require_once(__DIR__ . "/../mvc/view/footer.php");
 ?>

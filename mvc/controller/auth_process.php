@@ -1,10 +1,10 @@
 <?php
 
-  require_once("globals.php");
-  require_once("db.php");
-  require_once("models/User.php");
-  require_once("models/Message.php");
-  require_once("dao/UserDAO.php");
+  require_once(dirname(__DIR__) . "/model/config/globals.php");
+  require_once(dirname(__DIR__) . "/model/config/db.php");
+  require_once(dirname(__DIR__) . "/model/User.php");
+  require_once(dirname(__DIR__) . "/model/Message.php");
+  require_once(dirname(__DIR__) . "/model/dao/UserDAO.php");
 
   $message = new Message($BASE_URL);
 

@@ -1,10 +1,10 @@
 <?php
-  require_once("templates/header.php");
+  require_once(__DIR__ . "/../mvc/view/header.php");
 
   // Verifica se usuário está autenticado
-  require_once("models/Movie.php");
-  require_once("dao/MovieDAO.php");
-  require_once("dao/ReviewDAO.php");
+  require_once(__DIR__ . "/../mvc/model/Movie.php");
+  require_once(__DIR__ . "/../mvc/model/dao/MovieDAO.php");
+  require_once(__DIR__ . "/../mvc/model/dao/ReviewDAO.php");
 
   // Pegar o id do filme
   $id = filter_input(INPUT_GET, "id");
@@ -79,7 +79,7 @@
       <div class="col-md-12" id="review-form-container">
         <h4>Envie sua avaliação:</h4>
         <p class="page-description">Preencha o formulário com a nota e comentário sobre o filme</p>
-        <form action="<?= $BASE_URL ?>review_process.php" id="review-form" method="POST">
+        <form action="<?= $BASE_URL ?>../mvc/controller/review_process.php" id="review-form" method="POST">
           <input type="hidden" name="type" value="create">
           <input type="hidden" name="movies_id" value="<?= $movie->id ?>">
           <div class="form-group">
@@ -108,7 +108,7 @@
       <?php endif; ?>
       <!-- Comentários -->
       <?php foreach($movieReviews as $review): ?>
-        <?php require("templates/user_review.php"); ?>
+        <?php require(__DIR__ . "/../mvc/view/user_review.php"); ?>
       <?php endforeach; ?>
       <?php if(count($movieReviews) == 0): ?>
         <p class="empty-list">Não há comentários para este filme ainda...</p>
@@ -117,5 +117,5 @@
   </div>
 </div>
 <?php
-  require_once("templates/footer.php");
+  require_once(__DIR__ . "/../mvc/view/footer.php");
 ?>
