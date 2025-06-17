@@ -11,7 +11,7 @@
   $movieDao = new MovieDAO($conn, $BASE_URL);
 
   // Receber id do usuário
-  $id = filter_input(INPUT_GET, "id");
+  $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
   if(empty($id)) {
 
@@ -50,11 +50,11 @@
     <div class="col-md-8 offset-md-2">
       <div class="row profile-container">
         <div class="col-md-12 about-container">
-          <h1 class="page-title"><?= $fullName ?></h1>
-          <div id="profile-image-container" class="profile-image" style="background-image: url('<?= $BASE_URL ?>img/users/<?= $userData->image ?>')"></div>
+          <h1 class="page-title"><?= htmlspecialchars($fullName) ?></h1>
+          <div id="profile-image-container" class="profile-image" style="background-image: url('<?= $BASE_URL ?>img/users/<?= htmlspecialchars($userData->image) ?>')"></div>
           <h3 class="about-title">Sobre:</h3>
           <?php if(!empty($userData->bio)): ?>
-            <p class="profile-description"><?= $userData->bio ?></p>
+            <p class="profile-description"><?= htmlspecialchars($userData->bio) ?></p>
           <?php else: ?>
             <p class="profile-description">O usuário ainda não escreveu nada aqui...</p>
           <?php endif; ?>

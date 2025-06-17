@@ -7,13 +7,13 @@
   $movieDao = new MovieDAO($conn, $BASE_URL);
 
   // Resgata busca do usuário
-  $q = filter_input(INPUT_GET, "q");
+  $q = filter_input(INPUT_GET, "q", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
   $movies = $movieDao->findByTitle($q);
 
 ?>
   <div id="main-container" class="container-fluid">
-    <h2 class="section-title" id="search-title">Você está buscando por: <span id="search-result"><?= $q ?></span></h2>
+    <h2 class="section-title" id="search-title">Você está buscando por: <span id="search-result"><?= htmlspecialchars($q) ?></span></h2>
     <p class="section-description">Resultados de busca retornados com base na sua pesquisa.</p>
     <div class="movies-container">
       <?php foreach($movies as $movie): ?>
