@@ -1,12 +1,12 @@
 <?php
-  require_once("templates/header.php");
+  require_once(__DIR__ . "/../view/header.php");
 ?>
   <div id="main-container" class="container-fluid">
     <div class="col-md-12">
       <div class="row" id="auth-row">
         <div class="col-md-4" id="login-container">
           <h2>Entrar</h2>
-          <form action="<?= $BASE_URL ?>auth_process.php" method="POST">
+          <form action="<?= $BASE_URL ?>../controller/auth_process.php" method="POST">
             <input type="hidden" name="type" value="login">
             <div class="form-group">
               <label for="email">E-mail:</label>
@@ -21,7 +21,7 @@
         </div>
         <div class="col-md-4" id="register-container">
           <h2>Criar Conta</h2>
-          <form action="<?= $BASE_URL ?>auth_process.php" method="POST">
+          <form action="<?= $BASE_URL ?>../controller/auth_process.php" method="POST">
             <input type="hidden" name="type" value="register">
             <div class="form-group">
               <label for="email">E-mail:</label>
@@ -50,5 +50,5 @@
     </div>
   </div>
 <?php
-  require_once("templates/footer.php");
+  require_once(__DIR__ . "/../view/footer.php");
 ?>
