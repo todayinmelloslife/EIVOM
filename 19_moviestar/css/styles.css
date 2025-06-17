@@ -17,7 +17,7 @@
 }
 
 #main-navbar {
-  background-color: #121212;
+  background-color: #222;
 }
 
 #search-form {
@@ -57,7 +57,7 @@
 }
 
 .msg-container {
-  background-color: #000;
+  background-color: #222;
   padding: 15px;
 }
 
@@ -65,7 +65,7 @@
   width: 60%;
   margin: 0 auto;
   padding: 10px;
-  border: solid 1px #000;
+  border: solid 1px #222;
   text-align: center;
 }
 
@@ -83,7 +83,7 @@
 
 /* Home */
 #main-container {
-  background-color: #000;
+  background-color: #222;
   color: #FFF;
   min-height: 65vh;
   padding: 40px;
@@ -108,7 +108,7 @@
 }
 
 .movie-card {
-  background-color: #1A1A1A;
+  background-color: #222;
   width: 18%;
   margin-bottom: 30px;
   margin-left: 1%;
@@ -181,7 +181,7 @@
 }
 
 .card-btn {
-  color: #000;
+  color: #222;
   background-color: #F5C518;
   border: 2px solid #F5C518;
   width: 100%;
@@ -430,7 +430,7 @@
 
 /* Footer */
 #footer {
-  background-color: #000;
+  background-color: #222;
   color: #FFF;
   text-align: center;
   margin: 0;
