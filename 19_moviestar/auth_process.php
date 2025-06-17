@@ -11,16 +11,16 @@
   $userDao = new UserDAO($conn, $BASE_URL);
 
   // Resgata o tipo do formulário
-  $type = filter_input(INPUT_POST, "type");
+  $type = filter_input(INPUT_POST, "type", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
   // Verificação do tipo de formulário
   if($type === "register") {
 
-    $name = filter_input(INPUT_POST, "name");
-    $lastname = filter_input(INPUT_POST, "lastname");
-    $email = filter_input(INPUT_POST, "email");
-    $password = filter_input(INPUT_POST, "password");
-    $confirmpassword = filter_input(INPUT_POST, "confirmpassword");
+    $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $lastname = filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $confirmpassword = filter_input(INPUT_POST, "confirmpassword", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     // Verificação de dados mínimos 
     if($name && $lastname && $email && $password) {
@@ -70,8 +70,8 @@
 
   } else if($type === "login") {
 
-    $email = filter_input(INPUT_POST, "email");
-    $password = filter_input(INPUT_POST, "password");
+    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     // Tenta autenticar usuário
     if($userDao->authenticateUser($email, $password)) {

@@ -62,7 +62,7 @@
             </li>
             <li class="nav-item">
               <a href="<?= $BASE_URL ?>editprofile.php" class="nav-link bold">
-                <?= $userData->name ?>
+                <?= htmlspecialchars($userData->name) ?>
               </a>
             </li>
             <li class="nav-item">
@@ -79,6 +79,6 @@
   </header>
   <?php if(!empty($flassMessage["msg"])): ?>
     <div class="msg-container">
-      <p class="msg <?= $flassMessage["type"] ?>"><?= $flassMessage["msg"] ?></p>
+      <p class="msg <?= htmlspecialchars($flassMessage["type"]) ?>"><?= htmlspecialchars($flassMessage["msg"]) ?></p>
     </div>
   <?php endif; ?>

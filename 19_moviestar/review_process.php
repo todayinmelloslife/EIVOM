@@ -15,7 +15,7 @@
   $reviewDao = new ReviewDAO($conn, $BASE_URL);
 
   // Recebendo o tipo do formulário
-  $type = filter_input(INPUT_POST, "type");
+  $type = filter_input(INPUT_POST, "type", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
   // Resgata dados do usuário
   $userData = $userDao->verifyToken();
@@ -23,9 +23,9 @@
   if($type === "create") {
 
     // Recebendo dados do post
-    $rating = filter_input(INPUT_POST, "rating");
-    $review = filter_input(INPUT_POST, "review");
-    $movies_id = filter_input(INPUT_POST, "movies_id");
+    $rating = filter_input(INPUT_POST, "rating", FILTER_SANITIZE_NUMBER_INT);
+    $review = filter_input(INPUT_POST, "review", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $movies_id = filter_input(INPUT_POST, "movies_id", FILTER_SANITIZE_NUMBER_INT);
     $users_id = $userData->id;
 
     $reviewObject = new Review();

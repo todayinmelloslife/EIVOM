@@ -7,7 +7,7 @@
   require_once("dao/ReviewDAO.php");
 
   // Pegar o id do filme
-  $id = filter_input(INPUT_GET, "id");
+  $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
   $movie;
 
@@ -58,19 +58,19 @@
 <div id="main-container" class="container-fluid">
   <div class="row">
     <div class="offset-md-1 col-md-6 movie-container">
-      <h1 class="page-title"><?= $movie->title ?></h1>
+      <h1 class="page-title"><?= htmlspecialchars($movie->title) ?></h1>
       <p class="movie-details">
-        <span>Duração: <?= $movie->length ?></span>
+        <span>Duração: <?= htmlspecialchars($movie->length) ?></span>
         <span class="pipe"></span>
-        <span><?= $movie->category ?></span>
+        <span><?= htmlspecialchars($movie->category) ?></span>
         <span class="pipe"></span>
-        <span><i class="fas fa-star"></i> <?= $movie->rating ?></span>
+        <span><i class="fas fa-star"></i> <?= htmlspecialchars($movie->rating) ?></span>
       </p>
-      <iframe src="<?= $movie->trailer ?>" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encryted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <p><?= $movie->description ?></p>
+      <iframe src="<?= htmlspecialchars($movie->trailer) ?>" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encryted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <p><?= htmlspecialchars($movie->description) ?></p>
     </div>
     <div class="col-md-4">
-      <div class="movie-image-container" style="background-image: url('<?= $BASE_URL ?>img/movies/<?= $movie->image ?>')"></div>
+      <div class="movie-image-container" style="background-image: url('<?= $BASE_URL ?>img/movies/<?= htmlspecialchars($movie->image) ?>')"></div>
     </div>
     <div class="offset-md-1 col-md-10" id="reviews-container">
       <h3 id="reviews-title">Avaliações:</h3>

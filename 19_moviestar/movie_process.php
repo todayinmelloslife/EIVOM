@@ -12,7 +12,7 @@
   $movieDao = new MovieDAO($conn, $BASE_URL);
 
   // Resgata o tipo do formulário
-  $type = filter_input(INPUT_POST, "type");
+  $type = filter_input(INPUT_POST, "type", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
   // Resgata dados do usuário
   $userData = $userDao->verifyToken();
@@ -20,11 +20,11 @@
   if($type === "create") {
 
     // Receber os dados dos inputs
-    $title = filter_input(INPUT_POST, "title");
-    $description = filter_input(INPUT_POST, "description");
-    $trailer = filter_input(INPUT_POST, "trailer");
-    $category = filter_input(INPUT_POST, "category");
-    $length = filter_input(INPUT_POST, "length");
+    $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $trailer = filter_input(INPUT_POST, "trailer", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $category = filter_input(INPUT_POST, "category", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $length = filter_input(INPUT_POST, "length", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     $movie = new Movie();
 
@@ -81,7 +81,7 @@
   } else if($type === "delete") {
 
     // Recebe os dados do form
-    $id = filter_input(INPUT_POST, "id");
+    $id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_NUMBER_INT);
 
     $movie = $movieDao->findById($id);
 
@@ -107,12 +107,12 @@
   } else if($type === "update") { 
 
     // Receber os dados dos inputs
-    $title = filter_input(INPUT_POST, "title");
-    $description = filter_input(INPUT_POST, "description");
-    $trailer = filter_input(INPUT_POST, "trailer");
-    $category = filter_input(INPUT_POST, "category");
-    $length = filter_input(INPUT_POST, "length");
-    $id = filter_input(INPUT_POST, "id");
+    $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $trailer = filter_input(INPUT_POST, "trailer", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $category = filter_input(INPUT_POST, "category", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $length = filter_input(INPUT_POST, "length", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_NUMBER_INT);
 
     $movieData = $movieDao->findById($id);
 

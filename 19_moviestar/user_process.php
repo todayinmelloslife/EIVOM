@@ -11,7 +11,7 @@
   $userDao = new UserDAO($conn, $BASE_URL);
 
   // Resgata o tipo do formulário
-  $type = filter_input(INPUT_POST, "type");
+  $type = filter_input(INPUT_POST, "type", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
   // Atualizar usuário
   if($type === "update") {
@@ -20,10 +20,10 @@
     $userData = $userDao->verifyToken();
 
     // Receber dados do post
-    $name = filter_input(INPUT_POST, "name");
-    $lastname = filter_input(INPUT_POST, "lastname");
-    $email = filter_input(INPUT_POST, "email");
-    $bio = filter_input(INPUT_POST, "bio");
+    $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $lastname = filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $bio = filter_input(INPUT_POST, "bio", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     // Criar um novo objeto de usuário
     $user = new User();
@@ -76,8 +76,8 @@
   } else if($type === "changepassword") {
 
     // Receber dados do post
-    $password = filter_input(INPUT_POST, "password");
-    $confirmpassword = filter_input(INPUT_POST, "confirmpassword");
+    $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $confirmpassword = filter_input(INPUT_POST, "confirmpassword", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     // Resgata dados do usuário
     $userData = $userDao->verifyToken();
